@@ -25,7 +25,7 @@ public class StudentDao {
             statement.setDate(3, new java.sql.Date(date_of_birth.getTime()));
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return studentToAdd;
     }
@@ -41,7 +41,7 @@ public class StudentDao {
             statement.setDate(4, new java.sql.Date(student.getDate_of_birth().getTime()));
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return student;
     }
@@ -54,9 +54,8 @@ public class StudentDao {
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return false;
     }
 
     // Метод для вывода студента по id
